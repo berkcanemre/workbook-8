@@ -29,6 +29,8 @@ public class App {
             String query = "SELECT ProductID, ProductName, UnitPrice, UnitsInStock FROM products";
             ResultSet results = statement.executeQuery(query);
             System.out.printf("%-5s %-30s %-10s %-10s%n", "Id", "Name", "Price", "Stock");
+            System.out.println("-------------------------------------------------------");
+
 
             while (results.next()) {
                 int id = results.getInt("ProductID");
