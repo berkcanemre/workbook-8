@@ -4,15 +4,15 @@ import java.sql.*;
 
 public class App {
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/northwind"; // connection string
-        String username = "root"; // replace with your MySQL username
-        String password = "yearup"; // replace with your MySQL password
+        String url = "jdbc:mysql://localhost:3306/northwind";
+        String username = "root";
+        String password = "yearup";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, username, password);
 
-            //////////////// EXERCISE 1 CODE (Preserved) //////////////////
+            //////////////// EXERCISE //////////////////
             /*
             Statement statement = connection.createStatement();
             String query = "SELECT ProductName FROM products";
@@ -23,8 +23,7 @@ public class App {
                 System.out.println(productName);
             }
             */
-            ///////////////////////////////////////////////////////////////
-            /////////////// EXERCISE 2 CODE (Expanded Functionality) ///////////////
+            /////////////// EXERCISE 2 ///////////////
 
             Statement statement = connection.createStatement();
             String query = "SELECT ProductID, ProductName, UnitPrice, UnitsInStock FROM products";
@@ -39,7 +38,6 @@ public class App {
 
                 System.out.printf("%-5d %-30s $%-9.2f %-10d%n", id, name, price, stock);
             }
-            //////////////////////////////////////////////////////////////////////////////
             connection.close();
 
         } catch (ClassNotFoundException e) {
