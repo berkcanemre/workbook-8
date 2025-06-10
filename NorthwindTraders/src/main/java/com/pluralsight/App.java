@@ -2,16 +2,14 @@ package com.pluralsight;
 
 import java.sql.*;
 import java.util.Scanner;
+import javax.sql.DataSource;
 
 public class App {
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/northwind";
-        String username = "root";
-        String password = "yearup";
-
         Scanner scanner = new Scanner(System.in);
+        DataSource dataSource = DatabaseConnector.getDataSource(); // Using DataSource
 
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+        try (Connection connection = dataSource.getConnection()) {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             while (true) {
@@ -126,7 +124,7 @@ public class App {
             scanner.close();
         }
     }
-}
+
     ////////////////////// EXERCISE 1 CODE (Preserved Below) //////////////////////
     /*
     Statement statement = connection.createStatement();
@@ -139,3 +137,4 @@ public class App {
     }
     */
     ////////////////////////////////////////////////////////////////////////////////
+}
